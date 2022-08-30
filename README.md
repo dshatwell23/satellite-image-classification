@@ -41,6 +41,6 @@ After training the model, terrain analysis is performed by simply counting the n
 
 The performance of each classifier was tested using the F1-score. The classifier with the highest overall performance were the SVMs (98.2%), followed by the MLP (98.0%), random forrest (97.8%), CNN (96.7%), and naive Bayes (79.2%). These initial results appear to demostrate that the SVMs are the optimal classifier for the satellite image classification problem. However, when using the three new images with multiple terrain classes, the CNN has the best performance.
 
-<img src="images/cnn_vs_svm.png" alt="cnn_vs_svm" height=300/>
+<img src="images/cnn_vs_svm.png" alt="cnn_vs_svm"/>
 
 One possible explanation to this observation could be that the distribution of the new sub-images is slightly different to the distribution of the trainin set. In this case, the CNN might be able to generalize better to sub-images from different distributions, which is a highly sought after trait in classification algorithms. Because of this, we conclude that the best classifier could be either the SVMs or the CNN, depending on the specific satellite image classifiaction problem.
