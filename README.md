@@ -1,4 +1,4 @@
-# Classification of Satellite Images based on their Terrain Type
+# Classification of Satellite Images based on their Type of Terrain
 
 ![teaser figure](images/teaser.png)
 **Satellite image classification system:** The satellite image is partitioned into sub-images, which then are classified into four different terrain types: forest, city, desert, mountain, and water bodies.</p> 
