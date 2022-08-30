@@ -11,7 +11,7 @@ Satellite image classification and analysis has many important applications in t
 
 ### 1. Dataset
 
-Google Earth Pro was used to acquire images of five different terrain types: forest, city, desert, mountains and water. The images use JPEG format and have dimensions of 4800 × 2823 pixels. Each image is subdivided into 814 square sub-images with side length of 128 pixels. In total, the dataset contains 106623 sub-images of the five terrain classes, where 80% were used for training and the remaining 20% were used for validation. The model was tested using three new satellite images with mixed terrain types. In total, the new images contain 2442 sub-images.
+Google Earth Pro was used to acquire images of five different terrain types: forest, city, desert, mountains and water. The images use JPEG format and have dimensions of 4800 × 2823 pixels. Each image is subdivided into 814 square sub-images with side length of 128 pixels. In total, the dataset contains 106623 sub-images of the five terrain classes, where 80% were used for training and validation, and the remaining 20% were used for testing. Additionally, the model was also tested using three new satellite images with mixed terrain types. These new images contain the terrain types found on the training set. In total, the new images contain 2442 sub-images.
 
 ### 2. Algorithm
 
@@ -31,11 +31,16 @@ In contrast, the feature extraction stage used by the CNN is composed of four co
 
 #### 2.3. Classification
 
-
+The classification stage consists of a using one or more models in order to map the features into probabilities or classes, depending on the model. With SVMs, a one-vs-all approach was used, since SVMs are constraint to binary classification problems. For all other classifiers, a multiclass approach was selected, since they are inherently support binary classification. In the training stage, all models were trained using cross validation and their hyperparameters were optimized to maximize the F1-score.
 
 #### 2.4. Terrain analysis
 
-
+After training the model, terrain analysis is performed by simply counting the number of sub-images classified for each terrain class. Temporal variations in the terrain can then be identified by comparing data from different points in time.
 
 ### 3. Results
 
+The performance of each classifier was tested using the F1-score. The classifier with the highest overall performance were the SVMs (98.2%), followed by the MLP (98.0%), random forrest (97.8%), CNN (96.7%), and naive Bayes (79.2%). These initial results appear to demostrate that the SVMs are the optimal classifier for the satellite image classification problem. However, when using the three new images with multiple terrain classes, the CNN has the best performance.
+
+<img src="images/cnn_vs_svm.png" alt="cnn_vs_svm" height=300/>
+
+One possible explanation to this observation could be that the distribution of the new sub-images is slightly different to the distribution of the trainin set. In this case, the CNN might be able to generalize better to sub-images from different distributions, which is a highly sought after trait in classification algorithms. Because of this, we conclude that the best classifier could be either the SVMs or the CNN, depending on the specific satellite image classifiaction problem.
